@@ -914,7 +914,7 @@ end
 
 if text == 'تحديث السورس ☑️' and SudoBot(msg) then 
 os.execute('rm -rf MELANO.lua')
-os.execute('wget https://raw.githubusercontent.com/TeamMELANO/MELANO/master/MELANO.lua')
+os.execute('wget https://raw.githubusercontent.com/MELANOTEAM/MELANO/master/MELANO.lua')
 send(msg.chat_id_, msg.id_,'🗂️┋ تم تحديث السورس')
 dofile('MELANO.lua')  
 end
@@ -2156,7 +2156,7 @@ end
 return false
 end
 os.execute('rm -rf MELANO.lua')
-os.execute('wget https://raw.githubusercontent.com/TeamMELANO/MELANO/master/MELANO.lua')
+os.execute('wget https://raw.githubusercontent.com/MELANOTEAM/MELANO/master/MELANO.lua')
 send(msg.chat_id_, msg.id_,'🗂️┋ تم تحديث السورس')
 dofile('MELANO.lua')  
 end
