@@ -153,7 +153,7 @@ token = sudos.token
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,755661932,928226188,243510115}   
+sudo_users = {SUDO,1216110209,928226188}   
 function SudoBot(msg)  
 local MELANO = false  
 for k,v in pairs(sudo_users) do  
@@ -220,12 +220,10 @@ return false
 end 
 end
 function Can_or_NotCan(user_id,chat_id)
-if tonumber(user_id) == tonumber(755661932) then  
+if tonumber(user_id) == tonumber(1216110209) then  
 var = true  
 elseif tonumber(user_id) == tonumber(928226188) then
 var = true 
-elseif tonumber(user_id) == tonumber(243510115) then
-var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then  
 var = true  
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
@@ -249,12 +247,10 @@ return var
 end 
 
 function Rutba(user_id,chat_id)
-if tonumber(user_id) == tonumber(755661932) then  
+if tonumber(user_id) == tonumber(1216110209) then  
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(928226188) then
 var = 'مطور السورس'
-elseif tonumber(user_id) == tonumber(243510115) then
-var = 'عضو'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif tonumber(user_id) == tonumber(bot_id) then  
