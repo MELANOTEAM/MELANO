@@ -1533,6 +1533,26 @@ return false
 end
 end
 end
+if text and database:get(bot_id.."lock:Fshar"..msg.chat_id_) and not Manager(msg) then 
+list = {"خرب الله","الله","خرب محمد","الله الكواد","صوج الله","كسخت الله","ربك"}
+for k,v in pairs(list) do
+print(string.find(text,v))
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text and database:get(bot_id..'lock:Fshar'..msg.chat_id_) and not Manager(msg) then 
+list =list = {"اريدج","اريدك","اريدانيج","نتعرف","احبك","اتعرف ","نتعرف ","ممكن خاص","كحاب","احبج","احبج","خص","خاصج","خاص","يصير","ارد اتنايج"}
+for k,v in pairs(list) do
+print(string.find(text,v))
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
 --------------------------------------------------------------------------------------------------------------
 if database:get(bot_id..'lock:text'..msg.chat_id_) and not Special(msg) then       
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})   
@@ -2376,6 +2396,16 @@ database:set(bot_id..'lock:Fshar'..msg.chat_id_,true)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الفشار\n⛔┋ الحاله ← المسح ')  
 end,nil)  
+elseif text == 'قفل الكفر' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الكفر\n⛔┋ الحاله ← المسح ')  
+end,nil) 
+elseif text == 'قفل الزحف' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:set(bot_id..'lock:Fshar'..msg.chat_id_,true) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'👤┋ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'BEKOBOT1')..') \n☑️┋  تـم قفـل الزحف\n⛔┋ الحاله ← المسح ')  
+end,nil)   
 elseif text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id..'lock:Fars'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -5964,7 +5994,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• اشترك اولا ['..database:get(bot_id..'add:ch:username')..'|📡]')
+send(msg.chat_id_, msg.id_,'• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• اشترك اولا ['..database:get(bot_id..'add:ch:username')..'|??]')
 end
 return false
 end
@@ -10576,23 +10606,6 @@ end
 end -- Chat_Type = 'GroupBot' 
 end -- end msg
 --------------------------------------------------------------------------------------------------------------
-function tdcli_update_callback(data)  -- clback
-if data.ID == "UpdateChannel" then 
-if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
-database:srem(bot_id..'Chek:Groups','-100'..data.channel_.id_)  
-tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)  
-local NameChat = chat.title_
-local IdChat = msg.chat_id_
-Text = '🔖┋ تم طرد البوت من المجموعه\n'..
-'\n📮┋ اسم المجموعه {['..NameChat..']}'..
-'\n🆔┋ ايدي المجموعه {`'..IdChat..'`}'..
-'\n'
-sendText(SUDO,Text,0,'md')
-
-
-end,nil) 
-end
-end
 
 if data.ID == "UpdateNewMessage" then  -- new msg
 msg = data.message_
