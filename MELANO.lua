@@ -1506,6 +1506,15 @@ end
 end
 end
 if text and database:get(bot_id..'lock:Fars'..msg.chat_id_) and not Manager(msg) then 
+list = {"خرب الله","الله","خرب محمد","الله الكواد","صوج الله","كسخت الله","ربك"}
+for k,v in pairs(list) do
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text and database:get(bot_id..'lock:Fars'..msg.chat_id_) and not Manager(msg) then 
 list = {'a','u','y','l','t','b','A','Q','U','J','K','L','B','D','L','V','Z','k','n','c','r','q','o','z','I','j','m','M','w','d','h','e'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -2339,6 +2348,11 @@ database:set(bot_id..'lock:Fars'..msg.chat_id_,true)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي 💕 ܰ \n܁༯┆تم قفل الفارسيه 💕 ܰ ')  
 end,nil)   
+elseif text == 'قفل الكفر' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:set(bot_id..'lock:Fars'..msg.chat_id_,true) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي 💕 ܰ \n܁༯┆تم قفل الكفر 💕 ܰ ')  
+end,nil)   
 elseif text == 'قفل الانكليزيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:set(bot_id..'lock:Fars'..msg.chat_id_,true) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -2419,7 +2433,12 @@ elseif text == 'فتح الفارسيه' and msg.reply_to_message_id_ == 0 and M
 database:del(bot_id..'lock:Fshar'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي 💕 ܰ \n܁༯┆تم فتح الفارسيه 💕 ܰ ')  
-end,nil)   
+end,nil)  
+elseif text == 'فتح الكفر' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
+database:del(bot_id..'lock:Fshar'..msg.chat_id_) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي 💕 ܰ \n܁༯┆تم فتح الكفر 💕 ܰ ')  
+end,nil)  
 elseif text == 'فتح الانكليزيه' and msg.reply_to_message_id_ == 0 and Manager(msg) then 
 database:del(bot_id..'lock:Fars'..msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -2541,7 +2560,7 @@ end,nil)
 elseif text == 'فتح الشارحه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:Cmd"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي 💕 ܰ \n܁༯┆تم فتح الشارحه 💕 ܰ ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ههلو حياتي ?? ܰ \n܁༯┆تم فتح الشارحه 💕 ܰ ')  
 end,nil)   
 end
 if text == 'قفل الصور'and Mod(msg) and msg.reply_to_message_id_ == 0 then 
@@ -6516,11 +6535,11 @@ return false
 end   
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'𖦲┆*𝙻𝙸𝙽𝙺 𝙶𝚁𝙾𝚄𝙿*  💕 𖥣 ٠\n••━━━━━━𖥠━━━━━━••\n['..link..']')                          
+send(msg.chat_id_,msg.id_,'𖦲┆*𝘓𝘐𝘕𝘒 𝘎𝘙𝘖𝘜𝘗*  💕 𖥣 ٠\n••━━━━━━𖥠━━━━━━••\n['..link..']')                          
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
-linkgp = '༯┆*𝙻𝙸𝙽𝙺 𝙶𝚁𝙾𝚄𝙿* 💕🦄 ٠\n•━━━━━━𖥠━━━━━━•\n ['..linkgpp.result..']'
+linkgp = '༯┆*𝘓𝘐𝘕𝘒 𝘎𝘙𝘖𝘜𝘗* 🖤 ٠\n•━━━━━━𖥠━━━━━━•\n ['..linkgpp.result..']'
 else
 linkgp = '܁༯┆لايوجد رابط ܊ ارسل ضع رابط 💕 ܰ '
 end  
