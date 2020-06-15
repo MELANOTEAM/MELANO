@@ -2168,7 +2168,6 @@ Text = [[
 𖤤┊[tws Source](t.me/MELANOTWSbot)🖤
 𖤤➖➖➖➖➖➖➖➖➖𖤤
 ]]
-]]
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
