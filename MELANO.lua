@@ -432,7 +432,7 @@ elseif msgs < 700 then
 MELANO_Msg = 'متفاعل ' 
 elseif msgs < 1200 then 
 MELANO_Msg = 'متفاعل قوي ' 
-elseif msgs < 2000 then 
+elseif msgs < 1000 then 
 MELANO_Msg = 'متفاعل جدا ' 
 elseif msgs < 3500 then 
 MELANO_Msg = 'اقوى تفاعل '  
@@ -7389,8 +7389,8 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-if num > 2000 then 
-send(msg.chat_id_, msg.id_,'܁༯︙تستطيع تنظيف  ◞2000◜ كحد اقصئ 💕🥺 ܰ ')
+if num > 1000 then 
+send(msg.chat_id_, msg.id_,'܁༯︙تستطيع تنظيف  ◞1000◜ كحد اقصئ 💕🥺 ܰ ')
 return false  
 end  
 local msgm = msg.id_
@@ -7416,7 +7416,7 @@ send(msg.chat_id_, msg.id_,"܁༯︙ارسل الي الاسم الان 💕🥺
 end
 return false
 end
-if text == (database:get(bot_id.."Tshake:Name:Bot") or "ميلانو") then
+if text == (database:get(bot_id.."Melano:Name:Bot") or "ميلانو") then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7426,7 +7426,7 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-Namebot = (database:get(bot_id.."Tshake:Name:Bot") or "ميلانو")
+Namebot = (database:get(bot_id.."Melano:Name:Bot") or "ميلانو")
 local namebot = {
 " هاا بس لتصيح عليه😿 "..Namebot.. " فديت اليصيحني 🥺 ",
 "ممكن تضيفني بكروبات اني "..Namebot,
@@ -7445,11 +7445,11 @@ return false
 end
 
 if text == "بوت" then
-Namebot = (database:get(bot_id.."Tshake:Name:Bot") or "ميلانو")
+Namebot = (database:get(bot_id.."Melano:Name:Bot") or "ميلانو")
 send(msg.chat_id_, msg.id_,"*اسمي الكيوت* ["..Namebot.."] ") 
 end
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
-if DevTshake(msg) then
+if DevMelano(msg) then
 database:setex(bot_id.."Melano:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل لي الاسم الان ")  
 end
@@ -8708,7 +8708,7 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-local addmem = database:get(bot_id.."Tshake:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
+local addmem = database:get(bot_id.."Melano:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
 local Text = '٭ 𖢔︙جهاتك المضافه ضيف بعد ▵ ◜'..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
