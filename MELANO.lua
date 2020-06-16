@@ -8708,9 +8708,11 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-local Num = database:get(bot_id.."Tshake:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Text = '٭ 𖢔︙جهاتك المضافه ضيف بعد ▵ *» { '..Num..' } *'
-send(msg.chat_id_, msg.id_,Text) 
+local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
+if Num == 0 then 
+Text = '⚠️┋ لم تقم بااضافة اي احد'
+else
+Text = '📮┋ عدد جهاتك *» { '..Num..' } *'
 end
 if text == 'حذف جهاتي' or text == 'مسح جهاتي' then
 local Text = '☑︙🥺ﺀكك حياتي مسحت جهاتك '
