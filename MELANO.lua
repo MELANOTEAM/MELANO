@@ -8637,22 +8637,22 @@ if text == "مسح سحكاتي" or text == "حذف سحكاتي" then
 send(msg.chat_id_, msg.id_,'٭ 𖢔┆تم حذف جميع سحكاتك ▵ ◜'  )  
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
-if text == 'جهاتي' then  
+if text == 'جهاتي' or text == 'شكد ضفت' then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• اشترك اولا ['..database:get(bot_id..'add:ch:username')..'⚜️]')
+send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايمكنك استخدام البوت 😿 •\n• عليك الاشتراك في القناة 🥺 •\n• اشترك اولا ['..database:get(bot_id..'add:ch:username')..'💕🥺]')
 end
 return false
 end
 local addmem = database:get(bot_id.."Tshake:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Text = '👥┇عدد جهاتك المضافه هنا *~ '..addmem..'*'
+local Text = '٭ 𖢔︙جهاتك المضافه ضيف بعد ▵ *~ '..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'مسح جهاتي' then
-local Text = '☑┇تم مسح جميع جهاتك المضافه '
+if text == 'حذف جهاتي' or text == 'مسح جهاتي' then
+local Text = '☑︙🥺ﺀكك حياتي مسحت جهاتك '
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "تنظيف المشتركين" and SudoBot(msg) then 
