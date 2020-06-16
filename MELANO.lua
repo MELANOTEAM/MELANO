@@ -8712,12 +8712,12 @@ local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.
 if Num == 0 then 
 Text = '܁༯┆ماعدكك جهات 😹😔💞'
 else
-local Text = '👥┇عدد جهاتك المضافه هنا *~ '..Num..'*'
+Text = '܁༯┆عدد جهاتك المضافة ˼ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ˹'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'مسح جهاتي' then
-local Text = '☑┇تم مسح جميع جهاتك المضافه '
-send(msg.chat_id_, msg.id_,Text) 
+if text == "مسح جهاتي" or text == "حذف جهاتي" then  
+send(msg.chat_id_, msg.id_,'٭ 𖢔┆تم حذف جميع جهاتك ▵ ◜'  )  
+database:del(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text == "تنظيف المشتركين" and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
