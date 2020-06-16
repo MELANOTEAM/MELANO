@@ -8709,7 +8709,7 @@ end
 return false
 end
 local Num = database:get(bot_id.."Tshake:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Text = '٭ 𖢔︙جهاتك المضافه ضيف بعد ▵ *~ '..Num..'*'
+Text = '܁༯┆عدد جهاتك المضافة ˼ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ˹'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'حذف جهاتي' or text == 'مسح جهاتي' then
