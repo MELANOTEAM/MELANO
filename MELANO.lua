@@ -8698,24 +8698,25 @@ if text == "مسح سحكاتي" or text == "حذف سحكاتي" then
 send(msg.chat_id_, msg.id_,'٭ 𖢔︙تم حذف جميع سحكاتك ▵ ◜'  )  
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
-if text == 'جهاتي' or text == 'شكد ضفت' then 
+if text == 'جهاتي' then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايمكنك استخدام البوت 😿 •\n• عليك الاشتراك في القناة 🥺 •\n• اشترك اولا ['..database:get(bot_id..'add:ch:username')..'💕🥺]')
+send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 if Num == 0 then 
-Text = '⚠️┋ لم تقم بااضافة اي احد'
+Text = '܁༯┆ماعدكك جهات 😹😔💞'
 else
-Text = '📮┋ عدد جهاتك *» { '..Num..' } *'
+local Text = '👥┇عدد جهاتك المضافه هنا *~ '..Num..'*'
+send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'حذف جهاتي' or text == 'مسح جهاتي' then
-local Text = '☑︙🥺ﺀكك حياتي مسحت جهاتك '
+if text == 'مسح جهاتي' then
+local Text = '☑┇تم مسح جميع جهاتك المضافه '
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "تنظيف المشتركين" and SudoBot(msg) then 
