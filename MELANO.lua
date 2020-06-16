@@ -8698,7 +8698,7 @@ if text == "مسح سحكاتي" or text == "حذف سحكاتي" then
 send(msg.chat_id_, msg.id_,'٭ 𖢔︙تم حذف جميع سحكاتك ▵ ◜'  )  
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
-if text == 'جهاتي' then  
+if text == "جهاتي" and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8708,11 +8708,8 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
-if Num == 0 then 
-Text = '܁༯┆ماعدكك جهات 😹😔💞'
-else
-Text = '܁༯┆عدد جهاتك المضافة ˼ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ˹'
+local addmem = database:get(bot_id.."Tshake:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
+local Text = '👥┇عدد جهاتك المضافه هنا *~ '..addmem..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "مسح جهاتي" or text == "حذف جهاتي" then  
